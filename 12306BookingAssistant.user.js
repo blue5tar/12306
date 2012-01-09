@@ -328,8 +328,12 @@ withjQuery(function($){
 						reLogin();
 					}
 					else {
-						notify('登录成功，开始查询车票吧！');
-						window.location.replace( queryurl );
+						if (msg.indexOf('var isLogin= true') > -1) {
+							notify('登录成功，开始查询车票吧！');
+							window.location.href = queryurl;
+						} else {
+							reLogin();
+						}
 					};
 				},
 				error: function(msg){
